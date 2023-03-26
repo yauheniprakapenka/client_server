@@ -40,6 +40,8 @@ class TagWidget extends StatelessWidget {
 enum Tag {
   dart,
   flutter,
+  game,
+  blockchain,
 }
 
 extension TagMapper on Tag {
@@ -49,6 +51,10 @@ extension TagMapper on Tag {
         return AppColors.skyBlue;
       case Tag.flutter:
         return AppColors.lemonLime;
+      case Tag.game:
+        return AppColors.salmon;
+      case Tag.blockchain:
+        return AppColors.dogwoodRose;
     }
   }
 }

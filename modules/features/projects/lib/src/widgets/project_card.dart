@@ -2,36 +2,29 @@ import 'package:core_ui/core_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:image_network/image_network.dart';
 
+import '../models/project.dart';
 import 'link_button.dart';
 import 'tag_widget.dart';
 
 class ProjectCard extends StatelessWidget {
-  final String imageUrl;
-  final String title;
-  final String description;
-  final VoidCallback onSourceCodePressed;
-  final VoidCallback onLiveDemoPressed;
+  final Project project;
 
   static const double _width = 300.0;
   static const double _borderRadius = 14.0;
 
   const ProjectCard({
     super.key,
-    required this.imageUrl,
-    required this.title,
-    required this.description,
-    required this.onSourceCodePressed,
-    required this.onLiveDemoPressed,
+    required this.project,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      constraints: const BoxConstraints.expand(height: 340, width: _width),
       decoration: BoxDecoration(
         color: AppColors.darkGunmetal,
         borderRadius: BorderRadius.circular(_borderRadius),
       ),
-      width: _width,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
@@ -40,7 +33,7 @@ class ProjectCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(_borderRadius),
             clipBehavior: Clip.hardEdge,
             child: ImageNetwork(
-              image: imageUrl,
+              image: project.imageUrl,
               height: 150.0,
               width: _width,
               fitWeb: BoxFitWeb.contain,
@@ -52,7 +45,7 @@ class ProjectCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  title,
+                  project.title,
                   style: GoogleFonts.barlow(
                     textStyle: const TextStyle(
                       color: AppColors.brightGray,
@@ -62,7 +55,7 @@ class ProjectCard extends StatelessWidget {
                 ),
                 const SizedBox(height: AppPadding.p12),
                 Text(
-                  description,
+                  project.description,
                   style: GoogleFonts.barlow(
                     textStyle: const TextStyle(
                       color: AppColors.brightGray,
@@ -73,13 +66,13 @@ class ProjectCard extends StatelessWidget {
               ],
             ),
           ),
+          const Spacer(),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: AppPadding.p16),
             child: Wrap(
               spacing: AppPadding.p8,
-              children: const [
-                TagWidget(tag: Tag.dart),
-                TagWidget(tag: Tag.flutter),
+              children: [
+                ...project.tags.map((Tag tag) => TagWidget(tag: tag)),
               ],
             ),
           ),
@@ -87,8 +80,22 @@ class ProjectCard extends StatelessWidget {
           Row(
             children: [
               const SizedBox(width: AppPadding.p8),
-              LinkButton(title: 'Source code', onPressed: onSourceCodePressed),
-              LinkButton(title: 'Live demo', onPressed: onLiveDemoPressed),
+              project.sourceCodeUrl.isEmpty
+                  ? const SizedBox()
+                  : LinkButton(
+                      title: 'Live demo',
+                      onPressed: () {
+                        launchUrl(Uri.parse(project.sourceCodeUrl), mode: defaultLaunchMode);
+                      },
+                    ),
+              project.liveDemoUrl.isEmpty
+                  ? const SizedBox()
+                  : LinkButton(
+                      title: 'Source code',
+                      onPressed: () {
+                        launchUrl(Uri.parse(project.liveDemoUrl), mode: defaultLaunchMode);
+                      },
+                    ),
             ],
           ),
           const SizedBox(height: AppPadding.p16),
