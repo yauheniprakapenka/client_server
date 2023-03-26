@@ -12,7 +12,7 @@ dependencies:
 
   initial:
     path: modules/features/initial
-
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -12,20 +12,25 @@ class ProjectsScreen extends StatelessWidget {
       backgroundColor: AppColors.charlestonGreen,
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children:  const [
+        children: [
           Text(
-            'Мои Pet проекты',
-            style: TextStyle(
-              color: AppColors.brightGray,
-              fontSize: 20,
+            'My Pet projects',
+            style: GoogleFonts.barlow(
+              textStyle: const TextStyle(
+                color: AppColors.brightGray,
+                fontSize: 20,
+                fontWeight: FontWeight.w500,
+              ),
             ),
           ),
-          SizedBox(height: AppPadding.p16),
+          const SizedBox(height: AppPadding.p16),
           ProjectCard(
             imageUrl:
-                'https://user-images.githubusercontent.com/47568606/227786378-6fb5e8f9-d439-42bc-b197-ed34eb571f83.jpg',
+                'https://user-images.githubusercontent.com/47568606/227797175-7f747ea9-6b1c-499b-a425-08b6afacb259.jpg',
             title: 'Adventure game',
             description: '2d platformer with a walk through a snowy location',
+            onLiveDemoPressed: () {},
+            onSourceCodePressed: () {},
           ),
         ],
       ),
