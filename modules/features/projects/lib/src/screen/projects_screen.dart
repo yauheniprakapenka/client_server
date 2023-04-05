@@ -27,6 +27,7 @@ class ProjectsScreen extends StatelessWidget {
           const SizedBox(height: AppPadding.p16),
           Wrap(
             spacing: AppPadding.p16,
+            runSpacing: AppPadding.p16,
             children: [
               ...projects.map((Project project) {
                 return ProjectCard(project: project);

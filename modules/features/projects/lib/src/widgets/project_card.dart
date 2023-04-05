@@ -71,6 +71,7 @@ class ProjectCard extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: AppPadding.p16),
             child: Wrap(
               spacing: AppPadding.p8,
+              runSpacing: AppPadding.p8,
               children: [
                 ...project.tags.map((Tag tag) => TagWidget(tag: tag)),
               ],

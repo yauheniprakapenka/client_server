@@ -28,17 +28,22 @@ final List<Project> projects = [
     liveDemoUrl: 'https://github.com/yauheniprakapenka/newbie',
     tags: [Tag.dart, Tag.flutter, Tag.game],
   ),
-   const Project(
+  const Project(
     title: 'Dart Tron SDK',
-    description: 'Interaction with the Tron blockchain',
+    description: 'Integration with the Tron blockchain',
     imageUrl:
         'https://user-images.githubusercontent.com/47568606/227798468-e5f3af3a-ea3a-4638-a378-f2ef62768eee.jpg',
     sourceCodeUrl: 'https://github.com/yauheniprakapenka/dart_tron_sdk',
     liveDemoUrl: '',
     tags: [Tag.dart, Tag.blockchain],
   ),
-
-
-
-  
+  const Project(
+    title: 'Weather',
+    description: 'Getting weather information',
+    imageUrl:
+        'https://user-images.githubusercontent.com/47568606/227799915-1318e235-6b6a-4354-b47e-ec8d977612ad.jpg',
+    sourceCodeUrl: 'https://github.com/yauheniprakapenka/flutter_weather_app',
+    liveDemoUrl: 'https://yauheniprakapenka.github.io/flutter_weather_app/#/',
+    tags: [Tag.dart, Tag.flutter],
+  ),
 ];
