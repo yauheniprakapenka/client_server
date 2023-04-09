@@ -3,11 +3,10 @@ package main
 import (
 	"net/http"
 
-	"github.com/gin-gonic/gin" // $ go get .
+	"github.com/gin-gonic/gin"
 )
 
 func main() {
-	// $ go run main.go
 	router := gin.Default()
 
 	router.GET("/albums", getAlbums)
@@ -16,7 +15,7 @@ func main() {
 	router.DELETE("/albums/:id", deleteAlbumById)
 	router.PUT("/albums/:id", putAlbumById)
 
-	router.Run("localhost:8080")
+	router.Run("192.168.0.102:4444")
 }
 
 type album struct {
